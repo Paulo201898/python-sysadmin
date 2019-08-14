@@ -7,11 +7,12 @@
   </div>
   <div class="card-body">
     <header>
-      <h2>==NOME DO JOB==</h2>
+      <h2>{{ context.job.fullName }}</h2>
     </header>
-    <form>
+    <form method="POST" action="/jenkins/{{ context.job.fullName }}">
       <div class="form-group">
-        <textarea rows="4" class="form-control" name="jobdescription">
+        <textarea rows="4" class="form-control" name="xml">
+          {{ context.job.xml }}
         </textarea>
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
