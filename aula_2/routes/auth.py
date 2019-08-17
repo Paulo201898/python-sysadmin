@@ -1,6 +1,7 @@
 
 import flask
 import ldap3
+import logging
 
 blueprint = flask.Blueprint('auth', __name__)
 
@@ -36,6 +37,7 @@ def sign_in():
 		try:
 			user = conn.entries[0]
 		except IndexError:
+			logging.warning('Falha ao se logar')
 			return flask.redirect('/sign-in')
 
 		saved_password = user.userPassword[0].decode()
